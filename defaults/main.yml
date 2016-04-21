@@ -1,0 +1,8 @@
+fpm_user: fpm
+fpm_group: fpm
+fpm_log_dir: /var/log/fpm
+fpm_db_dir: "{{ __fpm_db_dir }}"
+fpm_service: "{{ __fpm_service }}"
+fpm_conf: "{{ __fpm_conf }}"
+fpm_flags: ""
+fpm_config: ""

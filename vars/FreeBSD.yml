@@ -1,0 +1,3 @@
+__fpm_db_dir: /var/db/fpm
+__fpm_conf: /usr/local/etc/php-fpm.conf
+__fpm_service: "php-fpm"

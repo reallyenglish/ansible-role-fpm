@@ -1,28 +1,28 @@
-require 'spec_helper'
-require 'serverspec'
+require "spec_helper"
+require "serverspec"
 
-package = 'fpm'
-service = 'fpm'
-config  = '/etc/fpm/fpm.conf'
-user    = 'fpm'
-group   = 'fpm'
-ports   = [ 9000 ]
-log_dir = '/var/log/fpm'
+package = "fpm"
+service = "fpm"
+config  = "/etc/fpm/fpm.conf"
+# user    = "fpm"
+# group   = "fpm"
+ports   = [9000]
+# log_dir = "/var/log/fpm"
 
 case os[:family]
-when 'freebsd'
-  config = '/usr/local/etc/php-fpm.conf'
-  package = 'php56'
+when "freebsd"
+  config = "/usr/local/etc/php-fpm.conf"
+  package = "php56"
 end
 
 describe package(package) do
   it { should be_installed }
-end 
+end
 
 describe file(config) do
   it { should be_file }
-  its(:content) { should match Regexp.escape('listen = 0.0.0.0:9000') }
-  its(:content) { should match /user = www/ }
+  its(:content) { should match Regexp.escape("listen = 0.0.0.0:9000") }
+  its(:content) { should match(/user = www/) }
 end
 
 # describe file(log_dir) do
